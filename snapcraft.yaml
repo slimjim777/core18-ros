@@ -1,5 +1,5 @@
-name: core18
-version: 18
+name: core18-ros
+version: 0.1
 summary: Runtime environment based on Ubuntu 18.04
 description: |
   The base snap based on the Ubuntu 18.04 release.
@@ -26,3 +26,111 @@ parts:
       unset LD_LIBRARY_PATH;
       export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin";
       snapcraftctl prime
+
+  ros-base:
+    plugin: catkin
+    rosdistro: kinetic
+    include-roscore: true
+    catkin-packages: []
+    after: [boostrap]
+    stage:
+      - -bin/bunzip2
+      - -bin/bzcat
+      - -bin/bzip2
+      - -bin/bzip2recover
+      - -etc/mime.types
+      - -etc/ssl/openssl.cnf
+      - -lib/x86_64-linux-gnu/libbz2.so.1.0
+      - -lib/x86_64-linux-gnu/libexpat.so.1
+      - -lib/x86_64-linux-gnu/libkeyutils.so.1.5
+      - -lib/x86_64-linux-gnu/libuuid.so.1.3.0
+      - -usr/bin/c_rehash
+      - -usr/bin/openssl
+      - -usr/bin/pdb3
+      - -usr/bin/py3clean
+      - -usr/bin/py3compile
+      - -usr/bin/pydoc3
+      - -usr/bin/pygettext3
+      - -usr/bin/python3
+      - -usr/bin/python3m
+      - -usr/bin/run-mailcap
+      - -usr/lib/ssl/certs
+      - -usr/lib/ssl/misc/CA.pl
+      - -usr/lib/ssl/misc/tsget
+      - -usr/lib/ssl/openssl.cnf
+      - -usr/lib/ssl/private
+      - -usr/lib/valgrind/python3.supp
+      - -usr/lib/x86_64-linux-gnu/glib-2.0/gio-querymodules
+      - -usr/lib/x86_64-linux-gnu/glib-2.0/glib-compile-schemas
+      - -usr/lib/x86_64-linux-gnu/libexpatw.so.1
+      - -usr/lib/x86_64-linux-gnu/libffi.so.6.0.4
+      - -usr/lib/x86_64-linux-gnu/libgio-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgmp.so.10
+      - -usr/lib/x86_64-linux-gnu/libgnutls.so.30
+      - -usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2.2
+      - -usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libhogweed.so.4
+      - -usr/lib/x86_64-linux-gnu/libk5crypto.so.3.1
+      - -usr/lib/x86_64-linux-gnu/libkrb5.so.3.3
+      - -usr/lib/x86_64-linux-gnu/libkrb5support.so.0.1
+      - -usr/lib/x86_64-linux-gnu/liblz4.so.1.7.1
+      - -usr/lib/x86_64-linux-gnu/libmpdec.so.2.4.2
+      - -usr/lib/x86_64-linux-gnu/libnettle.so.6
+      - -usr/lib/x86_64-linux-gnu/libp11-kit.so.0
+      - -usr/lib/x86_64-linux-gnu/libsqlite3.so.0.8.6
+      - -usr/lib/x86_64-linux-gnu/libtasn1.so.6
+      - -usr/lib/x86_64-linux-gnu/libyaml-0.so.2
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/lib4758cca.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libaep.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libatalla.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libcapi.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libchil.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libcswift.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libgmp.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libgost.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libnuron.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libpadlock.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libsureware.so
+      - -usr/lib/x86_64-linux-gnu/openssl-1.0.0/engines/libubsec.so
+      - -usr/sbin/update-ca-certificates
+      - -usr/share/doc/ca-certificates/copyright
+      - -usr/share/doc/libexpat1/changelog.Debian.gz
+      - -usr/share/doc/libexpat1/copyright
+      - -usr/share/doc/libffi6/changelog.Debian.gz
+      - -usr/share/doc/libglib2.0-0/changelog.Debian.gz
+      - -usr/share/doc/libglib2.0-0/copyright
+      - -usr/share/doc/libgmp10/changelog.Debian.gz
+      - -usr/share/doc/libgnutls30/changelog.Debian.gz
+      - -usr/share/doc/libgnutls30/copyright
+      - -usr/share/doc/libgssapi-krb5-2/copyright
+      - -usr/share/doc/libidn11/changelog.Debian.gz
+      - -usr/share/doc/libk5crypto3/copyright
+      - -usr/share/doc/libkeyutils1/changelog.Debian.gz
+      - -usr/share/doc/libkeyutils1/copyright
+      - -usr/share/doc/libkrb5-3/copyright
+      - -usr/share/doc/libkrb5support0/changelog.Debian.gz
+      - -usr/share/doc/libkrb5support0/copyright
+      - -usr/share/doc/liblz4-1/changelog.Debian.gz
+      - -usr/share/doc/libmpdec2/changelog.Debian.gz
+      - -usr/share/doc/libnettle6/changelog.Debian.gz
+      - -usr/share/doc/libnettle6/copyright
+      - -usr/share/doc/libp11-kit0/changelog.Debian.gz
+      - -usr/share/doc/libp11-kit0/copyright
+      - -usr/share/doc/libpython3-stdlib/changelog.Debian.gz
+      - -usr/share/doc/libsqlite3-0/changelog.Debian.gz
+      - -usr/share/doc/libssl1.0.0/changelog.Debian.gz
+      - -usr/share/doc/libtasn1-6/changelog.Debian.gz
+      - -usr/share/doc/libtasn1-6/copyright
+      - -usr/share/doc/libyaml-0-2/changelog.Debian.gz
+      - -usr/share/doc/openssl/changelog.Debian.gz
+      - -usr/share/doc/openssl/changelog.gz
+      - -usr/share/doc/openssl/copyright
+      - -usr/share/doc/python3-minimal/changelog.Debian.gz
+      - -usr/share/lintian/overrides/libglib2.0-0
+      - -usr/share/lintian/overrides/libkrb5-3
+      - -usr/share/pixmaps/python3.xpm
+      - -usr/share/python3/debian_defaults
+      - -usr/share/python3/debpython/version.py
+      - -usr/share/python3/py3versions.py
