@@ -10,6 +10,8 @@ parts:
   boostrap:
     plugin: make
     source: .
+    stage-packages:
+      - libc6
     build-packages:
       - shellcheck
       - wget
