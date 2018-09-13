@@ -6,6 +6,13 @@ description: |
 confinement: strict
 type: base
 
+apps:
+  run:
+    command: run-system
+    daemon: simple
+    restart-condition: never
+    plugs: [network, network-bind]
+
 parts:
   boostrap:
     plugin: make
@@ -136,3 +143,8 @@ parts:
       - -usr/share/python3/debian_defaults
       - -usr/share/python3/debpython/version.py
       - -usr/share/python3/py3versions.py
+
+  run-system:
+    plugin: dump
+    stage: [bin/run-system]
+    prime: [bin/run-system]
