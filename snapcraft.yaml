@@ -6,13 +6,6 @@ description: |
 confinement: strict
 type: base
 
-apps:
-  run:
-    command: run-system
-    daemon: simple
-    restart-condition: never
-    plugs: [network, network-bind]
-
 parts:
   boostrap:
     plugin: make
